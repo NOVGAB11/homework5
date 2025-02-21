@@ -1,5 +1,5 @@
 <script>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 import { useAuth } from '../composables/useAuth'
