@@ -3,8 +3,15 @@
     <RouterLink :to="{name: 'Home'}">Home</RouterLink>
     <RouterLink :to="{name: 'Other'}">Other</RouterLink>
     <RouterLink :to="{name: 'LoginPage'}">Login</RouterLink>
-    <RouterLink :to="{name: 'SettingsPage'}">Settings</RouterLink>
     
+
+    <div v-if="isAuthenticated">
+      Welcome {{ user.email }}
+      <button @click="logout" class="rounded-md bg-red-500 px-4 py-2 mx-2 text-red-100 hover:bg-red-700">LOGOUT</button>
+    </div>
+    <div v-else="">
+      <RouterLink :to="{name: 'SettingsPage'}">Settings</RouterLink>
+    </div>
   </nav>
 </template>
 
@@ -17,3 +24,9 @@ nav {
   }
 }
 </style>
+
+<script>
+import { useAuth } from '../composables/useAuth'
+const { isAuthenticated, logout, user} = useAuth()
+
+</script>
